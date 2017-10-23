@@ -2,11 +2,12 @@ clear all, close all
 
 totTime = tic;
 
+% **** Change paths! ****
 addpath('../aspire')
 initpath
 
-star_path = '/scratch/eitanl/empiar_10107/10107/data/shiny_new.star';
-prefix = '/scratch/eitanl/empiar_10107/10107/data/';
+star_path = 'shiny_new.star';
+prefix = 'empiar_10107/10107/data/';
 
 [CTFdata] = readSTAR(star_path); % Note: These are in real space. Convert to Fourier before denoising
 

@@ -8,7 +8,6 @@ addpath(genpath('../manopt'))
 addpath('../SHT')
 addpath('../aspire')
 initpath
-addpath('../cwf_denoise-master/cwf_functions')
 
 %% Declare parameters, load true volume
 info.mol = 'emd_3551';

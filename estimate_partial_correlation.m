@@ -1,7 +1,7 @@
 function [f_lmi, Cl] = estimate_partial_correlation(C_FB, info, Psilms2D)
 
-load('/scratch/alpha_ql_maxL_50_maxQ_300.mat')
-load('/scratch/eitanl/beta_qsli_maxL_20_maxQ_300_maxS_150_maxI_150.mat')
+load('alpha_ql_maxL_50_maxQ_300.mat')
+load('beta_qsli_maxL_20_maxQ_300_maxS_150_maxI_150.mat')
 
 % correct for bandlimit
 B_ql = B_ql*sqrt(info.r_cut/0.5);
