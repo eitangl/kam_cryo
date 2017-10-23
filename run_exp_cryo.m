@@ -55,7 +55,7 @@ shifts = randi(2*info.max_shift+1, size(projections,3), 2) - info.max_shift - 1;
 [proj_CTF_noisy, w_f, w_CTF] = prewhiten_projs(proj_CTF_noisy, CTF_params);
 
 
-[C_FB_shifted, proj_filtered] = estimate_cov_blocks(proj_CTF_noisy, info, CTF_params, w_f, w_CTF, shift_vec, shift_vec, shift_weight);
+[C_FB_shifted, proj_filtered] = estimate_cov_blocks(proj_CTF_noisy, info, CTF_params, w_f, w_CTF);
 C_FB = C_FB_shifted;
 
 %% Estimate 'partial autocorrelation' matrices:

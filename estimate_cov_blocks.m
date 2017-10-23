@@ -1,4 +1,4 @@
-function [C_FB, proj_filt, denoised_coeff_ccwf] = estimate_cov_blocks(projs, info, CTF_params, w_f, w_CTF, shifts_x, shifts_y, weights)
+function [C_FB, proj_filt, denoised_coeff_ccwf] = estimate_cov_blocks(projs, info, CTF_params, w_f, w_CTF)
 
 %% Expand data in Fourier-Bessel basis
 R = info.N;
