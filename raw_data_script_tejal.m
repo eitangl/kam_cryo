@@ -2,23 +2,13 @@ clear all, close all
 
 totTime = tic;
 
-addpath('../kam_cwf')
 addpath('../aspire')
 initpath
-initpath_development
-addpath('../cwf_denoise-master/cwf_functions')
-% fname = '~/Downloads/particles.star';
-% prefix = '/scratch/empiar_10059/data/';
-% '/scratch/eitanl/empiar_10005/data/particles/particles/tv1_relion_data.star'; 
-% prefix = '/scratch/eitanl/empiar_10005/data/particles/particles/';
-% fname = '/scratch/eitanl/empiar_10028/data/Particles/shiny_2sets.star'; % full 80S dataset
-% prefix = '/scratch/eitanl/empiar_10028/data/';
-fname = '/scratch/eitanl/empiar_10107/10107/data/shiny_new.star';
-prefix = '/scratch/eitanl/empiar_10107/10107/data/';
-% fname = '/scratch/eitanl/empiar_10005/data/particles/tv1_relion_data.star';
-% prefix = '/scratch/eitanl/empiar_10005/data/particles/';
 
-[CTFdata] = readSTAR(fname); % Note: These are in real space. Convert to Fourier before denoising
+star_path = '/scratch/eitanl/empiar_10107/10107/data/shiny_new.star';
+prefix = '/scratch/eitanl/empiar_10107/10107/data/';
+
+[CTFdata] = readSTAR(star_path); % Note: These are in real space. Convert to Fourier before denoising
 
 %%%% MODIFIED %%%%
 n = 2e5;
@@ -98,7 +88,7 @@ psd = cryo_noise_estimation(projs(:,:,1:1e4));
 [ projs , whiten_filter , nzidx ] = Prewhiten_image2d_tejal( projs , psd ); %Prewhitened
 
 [ noise_v_r ] = estimate_noise_real(projs(:,:,1:1e4));
-
+mean_img = mean(projs, 3);
 %% Now in fourier space
 projs = cfft2(projs);
 
@@ -162,4 +152,4 @@ recon = -recon; % images were already contrast-inverted
 timing.recon = toc(tic_recon_imgs);
 
 totTime = toc(totTime);
-clearvars -except C_FB recon c R
+clearvars -except C_FB recon c R mean_img

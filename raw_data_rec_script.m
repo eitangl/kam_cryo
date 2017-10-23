@@ -1,25 +1,19 @@
 %% Load denoised covariance, add paths:
-load('/scratch/eitanl/empiar_10107_200K.mat') % C_FB, r, c, recon
-% load('/scratch/eitanl/empiar_10028_raw_res.mat')
+load('empiar_10107_200K.mat') % C_FB, r, c, recon
 
 if isempty(gcp('nocreate')), parpool('local', 40); end % start parpool if not running already
 
 % Add relevant paths:
-addpath('../nfft')
-addpath('../kam_cwf')
-addpath(genpath('../manopt'))
-addpath('~/EMDB_maps')
+addpath(genpath('../manopt')) 
 addpath('../SHT')
 addpath('../aspire')
 initpath
-initpath_development
 addpath('../cwf_denoise-master/cwf_functions')
 
 %% Declare parameters, load true volume
 info.mol = 'emd_3551';
-% info.mol = 'EMD-2660';
 info.r_cut = c;
-info.maxL = 10;
+info.maxL = 7;
 
 info.L0 = size(recon,1);
 info.N=floor(info.L0/2);
@@ -35,8 +29,8 @@ vol = double(ReadMRC([info.mol '.map']));
 
 %% Reconstruct
 timing.basis = tic;
-[Psilms, Psilms_2D, jball, jball_2D, jjorigin] = precompute_spherical_basis(info);
-[f_lmi, Cl] = estimate_partial_correlation(C_FB, info, Psilms, jjorigin);
+[Psilms, Psilms_2D, jball, jball_2D] = precompute_spherical_basis(info);
+[f_lmi, Cl] = estimate_partial_correlation(C_FB, info, Psilms_2D);
 timing.basis = toc(timing.basis);
 
 timing.proj_prep = tic;

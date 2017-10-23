@@ -18,8 +18,9 @@ if exist('vol_rec', 'var') && ~isempty(vol_rec)
     vol_OE_real = real(fftshift( ifftn( ifftshift( vol_OE ) )));
     vol_rec_real = real(fftshift( ifftn( ifftshift( vol_rec ) )));
     
-    fsc_OE = zeros(info.N/2,1);
-    for ii = 1:info.N/2
+    p = floor(info.N/2);
+    fsc_OE = zeros(p,1);
+    for ii = 1:p
         fsc_OE(ii) = abs(FSC(info.N, vol_OE_real, vol_rec_real, ii));
     end
 end
