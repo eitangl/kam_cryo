@@ -4,12 +4,13 @@
 1. [ASPIRE](http://spr.math.princeton.edu/)
 2. [Manopt](http://manopt.org/)
 3. [Spherical Harmonic Transform toolbox by Archontis Politis](https://www.mathworks.com/matlabcentral/fileexchange/43856-real-complex-spherical-harmonic-transform--gaunt-coefficients-and-rotations)
+3. [Covariance Wiener Filtering (CWF) package](https://github.com/PrincetonUniversity/cwf_denoise)
 
 ## Installation:
 
 1. Download and install ASPIRE, add to path by running the initpath.m script.
 2. Download and install Manopt, add to path by running the importmanopt.m scriot.
-3. Download and extract the Spherical Harmonics toolbox, add its folder to the path.
+3. Download and extract the Spherical Harmonics toolbox and the CWF package, add their folders to the path.
 4. Download and extract this package [Warning: It includes a ~1GB file.]
 5. (Optional) Run gen_proj_ASPIRE on a given volume to generate a number of uniformly randomly distrinuted projections to test synthetic datasets.
 
